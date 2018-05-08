@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace LabPOO
 {
+        
     class Program
     {
         public static List<Product> cart;
@@ -51,6 +55,14 @@ namespace LabPOO
                     }
                     else if (answer == "5")
                     {
+                        if(cart.Count!=0)
+                            {
+                              IFormatter formatter = new BinaryFormatter();
+                              Stream stream = new FileStream("carrito.txt", FileMode.OpenOrCreate,FileAccess.Write, FileShare.None);
+                              formatter.Serialize(stream, cart);
+
+                              stream.Close();
+                            }
                         Environment.Exit(1);
                     }
                 }

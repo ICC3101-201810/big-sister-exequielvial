@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace LabPOO
 {
+
     class Product
     {
         private string name;
@@ -21,8 +22,11 @@ namespace LabPOO
             this.unit = unit;
         }
 
+       
         public bool Agregar(List<Product> carrito)
         {
+            
+            
             if (stock > 0)
             {
                 carrito.Add(this);
@@ -31,6 +35,7 @@ namespace LabPOO
             }
             return false;
         }
+        
 
         public string Name { get => name; }
         public int Stock { get => stock; }
